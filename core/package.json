@@ -1,0 +1,11 @@
+{
+  "name": "handler",
+  "version": "1.0.0",
+  "description": "Responsible for execution of server side tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "saish mungase",
+  "license": "ISC"
+}
