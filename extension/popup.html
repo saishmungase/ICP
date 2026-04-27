@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #09090b;
+      --surface: #121214;
+      --border: #27272a;
+      --accent: #6366f1;
+      --text: #ffffff;
+      --text-dim: #71717a;
+      --success: #22c55e;
+      --danger: #f87171;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-thumb { background: #312e81; border-radius: 10px; }
+
+    body { width: 350px; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+    .header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--border); background: #000; }
+    .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); font-weight: 700; text-transform: uppercase; }
+    .settings-btn { background: transparent; border: 1px solid var(--border); color: var(--text-dim); padding: 4px 10px; border-radius: 6px; font-size: 11px; cursor: pointer; }
+
+    .hero { padding: 24px 20px; text-align: center; border-bottom: 1px solid var(--border); background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg) 85%); }
+    .company-logo { width: 44px; height: 44px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 12px; background: #000; object-fit: contain; }
+    
+    .score-container { position: relative; width: 90px; height: 90px; margin: 0 auto 12px; }
+    .score-val { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; font-weight: 800; font-family: 'JetBrains Mono'; }
+    
+    .company-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .verdict { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 10px; border-radius: 4px; text-transform: uppercase; border: 1px solid var(--accent); color: var(--accent); }
+
+    .data-list { padding: 12px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 8px; position: relative; overflow: hidden; }
+    
+    /* Indicator Line on the left */
+    .match-indicator { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
+    .is-match { background: var(--success); }
+    .is-miss { background: var(--border); }
+
+    .label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+    .label { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--text-dim); text-transform: uppercase; }
+    
+    .value { font-size: 13px; font-weight: 600; color: #e4e4e7; margin-bottom: 4px; display: block; }
+    
+    /* THE NEW TARGET LABEL */
+    .target-box { font-size: 10px; color: var(--text-dim); display: flex; align-items: center; gap: 4px; }
+    .target-val { color: #555; font-style: italic; }
+    .match-icon { font-size: 10px; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+    .tag { background: #1e1b4b; border: 1px solid #312e81; color: #a5b4fc; font-size: 9px; padding: 2px 6px; border-radius: 4px; }
+
+    .ai-box { margin: 12px; padding: 15px; background: #0f172a; border-radius: 10px; border: 1px solid #1e293b; border-left: 3px solid var(--accent); }
+    .ai-label { font-size: 10px; font-weight: 700; color: var(--accent); margin-bottom: 4px; display: block; }
+    .ai-text { font-size: 11px; color: #94a3b8; font-style: italic; }
+
+    .footer { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 9px; color: var(--text-dim); }
+    .ln-btn { color: #818cf8; text-decoration: none; font-weight: 600; border: 1px solid #312e81; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-text">Leadmark</div>
+    <button class="settings-btn" id="settings-btn">Config</button>
+  </div>
+  <div id="content"></div>
+  <script src="popup.js"></script>
+</body>
+</html>
