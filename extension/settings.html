@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ICP Configuration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #09090b;
+      --surface: #121214;
+      --border: #27272a;
+      --accent: #6366f1;
+      --text: #ffffff;
+      --text-dim: #71717a;
+      --danger: #f87171;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body { 
+      background: var(--bg); 
+      color: var(--text); 
+      font-family: 'Inter', sans-serif; 
+      padding: 40px; 
+      display: flex;
+      justify-content: center;
+    }
+
+    .container { width: 100%; max-width: 500px; }
+
+    h1 { 
+      font-size: 24px; 
+      font-weight: 800; 
+      color: var(--accent); 
+      margin-bottom: 8px; 
+      letter-spacing: -0.02em;
+    }
+
+    p { color: var(--text-dim); font-size: 14px; margin-bottom: 32px; }
+
+    .card { 
+      background: var(--surface); 
+      border: 1px solid var(--border); 
+      padding: 24px; 
+      border-radius: 12px; 
+      margin-bottom: 24px; 
+    }
+
+    label { 
+      display: block; 
+      font-family: 'JetBrains Mono', monospace; 
+      font-size: 10px; 
+      color: var(--text-dim); 
+      text-transform: uppercase; 
+      margin-bottom: 10px; 
+      letter-spacing: 0.05em;
+    }
+
+    input, select { 
+      width: 100%; 
+      background: #000; 
+      border: 1px solid var(--border); 
+      color: #fff; 
+      padding: 12px; 
+      border-radius: 8px; 
+      font-family: 'Inter'; 
+      font-size: 14px;
+      margin-bottom: 24px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus { border-color: var(--accent); }
+
+    /* Tag Styling */
+    .tags-container { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 8px; 
+      margin-bottom: 12px; 
+    }
+
+    .tag { 
+      background: #1e1b4b; 
+      border: 1px solid #312e81; 
+      color: #a5b4fc; 
+      padding: 6px 12px; 
+      border-radius: 6px; 
+      font-size: 12px; 
+      display: flex; 
+      align-items: center; 
+      gap: 8px;
+      font-family: 'JetBrains Mono';
+    }
+
+    .tag-remove { 
+      cursor: pointer; 
+      color: var(--danger); 
+      font-weight: 800; 
+      font-size: 14px;
+    }
+
+    /* Autocomplete Suggestion Box */
+    .suggest-box {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #0c0c0e;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+      z-index: 100;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    
+    .suggest-box.open { display: block; }
+
+    .suggest-item {
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #e4e4e7;
+      cursor: pointer;
+      border-bottom: 1px solid #1a1a1a;
+      transition: 0.2s;
+    }
+
+    .suggest-item:hover {
+      background: #1e1b4b;
+      color: var(--accent);
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+
+    .save-btn { 
+      width: 100%; 
+      background: var(--accent); 
+      color: #fff; 
+      border: none; 
+      padding: 16px; 
+      border-radius: 8px; 
+      font-weight: 700; 
+      cursor: pointer; 
+      transition: all 0.2s;
+    }
+
+    .save-btn:hover { background: #4f46e5; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ICP Configuration</h1>
+    <p>Setup your logic engine. Changes to tags and dropdowns are synced live.</p>
+    
+    <div class="card">
+      <label>Target Industries (Search to add)</label>
+      <div id="industry-tags" class="tags-container"></div>
+      
+      <div style="position: relative; margin-bottom: 24px;">
+        <input type="text" id="industry-input" placeholder="Type name (e.g. SaaS) & hit Enter to search...">
+        <div id="suggest-box" class="suggest-box"></div>
+      </div>
+
+      <label>Employee Count Range (ECR)</label>
+      <select id="e_c_r">
+        <option value="">Any Size</option>
+        <option value="myself only">myself only</option>
+        <option value="2-10">2-10</option>
+        <option value="11-50">11-50</option>
+        <option value="51-200">51-200</option>
+        <option value="201-500">201-500</option>
+        <option value="501-1000">501-1000</option>
+        <option value="1001-5000">1001-5000</option>
+        <option value="5001-10000">5001-10000</option>
+        <option value="10001+">10001+</option>
+      </select>
+
+      <label>Ideal Business Model</label>
+      <select id="business_model">
+        <option value="">Any Model</option>
+        <option value="B2B Tech / SaaS">B2B Tech / SaaS</option>
+        <option value="B2B Services">B2B Services</option>
+        <option value="B2C / Consumer">B2C / Consumer</option>
+        <option value="Manufacturing / Industrial">Manufacturing / Industrial</option>
+      </select>
+
+      <label>Target Maturity</label>
+      <select id="maturity_stage">
+        <option value="">Any Stage</option>
+        <option value="Seed / Stealth">Seed / Stealth</option>
+        <option value="Early Stage (Series A)">Early Stage (Series A)</option>
+        <option value="Growth Stage (Series B/C)">Growth Stage (Series B/C)</option>
+        <option value="Late Stage / Pre-IPO">Late Stage / Pre-IPO</option>
+        <option value="Enterprise / Public">Enterprise / Public</option>
+      </select>
+    </div>
+    
+    <button class="save-btn" id="save-settings">Manual Logic Refresh</button>
+  </div>
+  <script src="settings.js"></script>
+</body>
+</html>
