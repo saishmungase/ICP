@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Responsible for execution of server side tasks",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "npm run test"
   },
@@ -11,9 +12,15 @@
   "dependencies": {
     "@types/express": "^5.0.6",
     "@upstash/redis": "^1.37.0",
+    "axios": "^1.15.2",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.3.2",
+    "xlsx": "^0.18.5",
     "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19"
   }
 }
