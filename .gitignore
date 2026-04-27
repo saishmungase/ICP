@@ -1,2 +1,4 @@
 core/node_modules
 core/build
+core/.env
+core/src/collection.js
