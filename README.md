@@ -20,15 +20,19 @@ The extension communicates with a Node.js backend that orchestrates data from Cr
 2. **Visit any company website** – Leadmark identifies the domain automatically
 3. **Get a real-time score** – Backend looks up company data from Crustdata, enriches it with predictive insights, scores it against your criteria
 4. **Act on the intel** – See the company logo, employee range, industries, business model, likely buyer personas, and a direct LinkedIn link
-
+5. 
 - *PopUP*
-  
-<img src="./public/popup-1.jpg" width="48%" />
-<img src="./public/popup-2.jpg" width="48%" />
+
+<table>
+  <tr>
+    <td width="50%"><img src="./public/popup-1.jpg" /></td>
+    <td width="50%"><img src="./public/popup-2.jpg" /></td>
+  </tr>
+</table>
 
 - *Config*
   
-<img src="./public/config.jpg" width="48%" />
+<img src="./public/config.jpg" width="60%" />
 
 
 ## Key Features
@@ -43,7 +47,7 @@ The extension communicates with a Node.js backend that orchestrates data from Cr
 
 ## Architecture
 
-<img src="./public/archi.jpg" width="60%" />
+<img src="./public/archi.jpg" width="70%" />
 
 ## Component breakdown:
 
