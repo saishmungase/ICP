@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "npm run test"
+    "build" : "npm install",
+    "start": "npx tsx ./src/api.ts"
   },
   "author": "saish mungase",
   "license": "ISC",
