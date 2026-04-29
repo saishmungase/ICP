@@ -1,5 +1,8 @@
 const content = document.getElementById('content');
 
+const apiUrl = "https://icp-ybg3.onrender.com"
+// apiUrl = "http://localhost:3000"
+
 function render(data, settings) {
     const { score, logo, name, linkedin, e_c_r, industries, enriched_insights, cached } = data;
     const { maturity_stage, business_model, target_personas, tech_adoption_propensity } = enriched_insights;
@@ -97,7 +100,7 @@ function render(data, settings) {
     const safeSettings = icp_settings || {};
     
     try {
-        const res = await fetch('http://localhost:3000/score', {
+        const res = await fetch(`${apiUrl}/score`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ domain, settings: safeSettings })

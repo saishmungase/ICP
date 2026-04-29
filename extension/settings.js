@@ -1,4 +1,5 @@
-let targetIndustries = [];
+const apiUrl = "https://icp-ybg3.onrender.com"
+// apiUrl = "http://localhost:3000"
 
 const industryInput = document.getElementById('industry-input');
 const tagsContainer = document.getElementById('industry-tags');
@@ -42,7 +43,7 @@ async function searchIndustries(query) {
     suggestBox.classList.add('open');
 
     try {
-        const res = await fetch('http://localhost:3000/autocomplete', {
+        const res = await fetch(`${apiUrl}/autocomplete`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ field: "basic_info.industries", query: query })
